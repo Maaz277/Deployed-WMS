@@ -29,10 +29,6 @@ db.mongoose
   });
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
-
 require("./app/routes/turorial.routes")(app);
 
 if(process.env.NODE_ENV === 'production'){
