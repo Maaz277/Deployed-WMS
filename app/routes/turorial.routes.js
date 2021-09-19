@@ -88,7 +88,11 @@ module.exports = app => {
   })
 
   // Create a new Tutorial
-  router.post("/", tutorials.create);
+  router.post("/", (res, req, next) => {
+      res.status(201).json({
+          message: "heroku"
+      })
+  });
 
   // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
