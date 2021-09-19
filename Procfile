@@ -1,1 +1,1 @@
-web: node app/routes/tutorial.routes.js
+web: nodemon server.js

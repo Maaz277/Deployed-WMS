@@ -1,13 +1,9 @@
 const express = require("express");
 // const bodyParser = require("body-parser"); /* deprecated */
 const cors = require("cors");
+
 const app = express();
 const logger = require("morgan")
-
-var router = require("express").Router();
-
-const Info = require("./app/models/tutorial.model")
-const mongoose = require("mongoose")
 
 app.use(cors());
 app.use(logger('dev'))
@@ -36,87 +32,6 @@ db.mongoose
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
-
-app.post("/add", (req,res)=>{
-
-  const info = new Info({
-      _id: new mongoose.Types.ObjectId(),
-      type: req.body.type,
-      depot: req.body.depot
-  })
-  info.save()
-  .then(result => {
-      console.log(result)
-      res.status(201).json({
-          message: "Info added for this product",
-          Info: result
-      })
-  })
-  .catch(err => {
-      console.log(err)
-      res.status(500).json({
-          error: err
-      })
-  })
-
-  // console.log(req.body)
-  // res.status(201).send({
-  //   message: "success",
-  // })
-});
-
-app.get('/depot_count/:depot', (req, res, next) => {
-
-  const depot = req.params.depot
-
-  Info.countDocuments({depot: depot})
-  .then(result => {
-      //console.log(result)
-      res.status(201).json({
-          count: result
-      })
-  })
-  .catch(err => {
-      res.status(500).json({
-          error: err
-      })
-  })
-})
-
-app.get('/type_count/:type', (req, res, next) => {
-
-  const type = req.params.type
-
-  Info.countDocuments({type: type})
-  .then(result => {
-      //console.log(result)
-      res.status(201).json({
-          count: result
-      })
-  })
-  .catch(err => {
-      res.status(500).json({
-          error: err
-      })
-  })
-})
-
-app.get("/total", (req, res, next) => {
-
-  Info.countDocuments()
-  .then(result => {
-      //console.log(result)
-      res.status(201).json({
-          count: result
-      })
-  })
-  .catch(err => {
-      res.status(500).json({
-          error: err
-      })
-  })
-})
-
 
 require("./app/routes/turorial.routes")(app);
 
