@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-router.post("/add", (req,res)=>{
+app.post("/add", (req,res)=>{
 
   const info = new Info({
       _id: new mongoose.Types.ObjectId(),
@@ -65,7 +65,7 @@ router.post("/add", (req,res)=>{
   // })
 });
 
-router.get('/depot_count/:depot', (req, res, next) => {
+app.get('/depot_count/:depot', (req, res, next) => {
 
   const depot = req.params.depot
 
@@ -83,7 +83,7 @@ router.get('/depot_count/:depot', (req, res, next) => {
   })
 })
 
-router.get('/type_count/:type', (req, res, next) => {
+app.get('/type_count/:type', (req, res, next) => {
 
   const type = req.params.type
 
@@ -101,7 +101,7 @@ router.get('/type_count/:type', (req, res, next) => {
   })
 })
 
-router.get("/total", (req, res, next) => {
+app.get("/total", (req, res, next) => {
 
   Info.countDocuments()
   .then(result => {
