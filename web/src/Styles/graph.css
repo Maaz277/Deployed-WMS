@@ -1,0 +1,14 @@
+.graph{
+    box-sizing: border-box;
+    background-image: url("../Assests/factory.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow: scroll;
+    width: auto
+}

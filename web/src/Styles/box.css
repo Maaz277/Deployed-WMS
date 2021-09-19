@@ -1,0 +1,21 @@
+.dbox{
+    height: 45vh;
+    width: 45vh;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: gray;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    border-radius: 35px;
+    opacity: 0.3;
+}
+
+.count{
+    font-size: 120px;
+}
+
+.name{
+    font-size: 60px;
+    color: white
+}

@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));   /* bodyParser.urlencoded() is
 
 const db = require("./app/models");
 db.mongoose
-  .connect(db.url, {
+  .connect(process.env.MONGODB_URI || db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -34,6 +34,10 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/turorial.routes")(app);
+
+if(process.env.NODE_ENV === 'production'){
+  
+}
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
