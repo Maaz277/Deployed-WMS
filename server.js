@@ -36,7 +36,11 @@ app.get("/", (req, res) => {
 require("./app/routes/turorial.routes")(app);
 
 if(process.env.NODE_ENV === 'production'){
-  
+  app.use(express.static('web/build'))
+  const path = require('path')
+  app.get("*",(req,res) => {
+    res.sendFile(path.resolve(__dirname,'web','build','index.html'))
+  })
 }
 
 // set port, listen for requests
