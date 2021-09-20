@@ -53,7 +53,7 @@ export default function Graph(){
                     <BarGraph label = "Depot" labels = {["1", "2", "3"]} data = {[d1, d2, d3]} />
                 </div>
                 <div style = {{opacity: 0.5}}>
-                    <PieChart label = "Waste" labels = {["Useful", "Harmful", "Useless"]} data = {[(useful/total)*100,(harmful/total)*100,(useless/total)*100]}/>
+                    <PieChart label = "Waste" labels = {["Useful", "Harmful", "Useless"]} data = {[useful,harmful,useless]}/>
                 </div>
             </div>
         </div>
