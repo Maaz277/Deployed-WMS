@@ -16,7 +16,7 @@ export default function Waste(){
             const total = await api.TOTAL()    
             setTotal(total.data.count)
 
-            const useful = await api.TYPE_COUNT("Usefull")
+            const useful = await api.TYPE_COUNT("Useful")
             setUseful(useful.data.count)
 
             const useless = await api.TYPE_COUNT("Useless")

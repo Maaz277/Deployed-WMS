@@ -7,7 +7,7 @@ import api from "../Services/Apis"
 export default function Graph(){
 
     const [total, setTotal] = useState()
-    const [usefull, setUsefull] = useState()
+    const [useful, setUseful] = useState()
     const [useless, setUseless] = useState()
     const [harmful, setHarmful] = useState()
     const [d1,setD1] = useState()
@@ -30,8 +30,8 @@ export default function Graph(){
             const three = await api.DEPOT_COUNT(3)
             setD3(three.data.count)
 
-            const usefull = await api.TYPE_COUNT("Usefull")
-            setUsefull(usefull.data.count)
+            const useful = await api.TYPE_COUNT("Useful")
+            setUseful(useful.data.count)
 
             const useless = await api.TYPE_COUNT("Useless")
             setUseless(useless.data.count)
@@ -49,11 +49,11 @@ export default function Graph(){
         <div className = "graph">
             <div style = {{marginTop: "5%"}}> 
                 <div style = {{display: "flex", opacity: 0.5}} className = "bar">
-                    <BarGraph label = "Waste" labels = {["Usefull", "Harmful", "Useless"]} data = {[usefull,harmful,useless]} />
+                    <BarGraph label = "Waste" labels = {["Useful", "Harmful", "Useless"]} data = {[useful,harmful,useless]} />
                     <BarGraph label = "Depot" labels = {["1", "2", "3"]} data = {[d1, d2, d3]} />
                 </div>
                 <div style = {{opacity: 0.5}}>
-                    <PieChart label = "Waste" labels = {["Useful", "Harmful", "Useless"]} data = {[(usefull/total)*100,(harmful/total)*100,(useless/total)*100]}/>
+                    <PieChart label = "Waste" labels = {["Useful", "Harmful", "Useless"]} data = {[(useful/total)*100,(harmful/total)*100,(useless/total)*100]}/>
                 </div>
             </div>
         </div>
