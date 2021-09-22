@@ -1,5 +1,5 @@
 .dbox{
-    height: 45vh;
+    height: 50vh;
     width: 45vh;
     text-align: center;
     box-sizing: border-box;
@@ -17,5 +17,5 @@
 
 .name{
     font-size: 60px;
-    color: white
+    color: black
 }

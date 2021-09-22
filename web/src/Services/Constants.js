@@ -10,6 +10,8 @@ module.exports = {
 
     TYPE_COUNT: "/type_count/",
 
-    TOTAL: "/total"
+    TOTAL: "/total",
+
+    TYPE_DEPOT_COUNT: "/type_depot_count/"
 
 }

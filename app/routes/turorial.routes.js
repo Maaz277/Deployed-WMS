@@ -4,6 +4,7 @@ module.exports = app => {
   var router = require("express").Router();
 
   const Info = require("../models/tutorial.model")
+  const User = require("../models/User")
 
   const mongoose = require("mongoose")
 
@@ -105,6 +106,19 @@ module.exports = app => {
         })
     })
   })
+
+  router.post('/login', (req, res, next) => {
+    User.findOne({Id: req.body.id, password: req.body.password})
+        .then(User => {
+            if(!User){
+                throw {error: true, message: "Sorry, Invalid ID or Password."}
+            }
+            else{
+                return res.status(200).send(User);
+            }
+        })
+        .catch(err => res.status(400).send(err));
+    })
 
   // Create a new Tutorial
   router.post("/", (res, req, next) => {

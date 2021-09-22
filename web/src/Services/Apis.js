@@ -20,5 +20,14 @@ export default{
 
     TOTAL : function(){
         return axios.get(constant.URL + constant.TOTAL)
+    },
+
+    TYPE_DEPOT_COUNT : function(depot, type){
+        return axios.get(constant.URL + constant.TYPE_DEPOT_COUNT + depot + "/" + type , {
+            params : {
+                type: type,
+                depot: depot
+            }
+        })
     }
 }
