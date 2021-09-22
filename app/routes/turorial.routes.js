@@ -87,25 +87,22 @@ module.exports = app => {
     })
   })
 
-  router.get('/type_depot_count/:depot', (req, res, next) => {
+  router.get('/type_depot_count/:depot/:type', (req, res, next) => {
 
-    // const depot = req.params.depot
-    // //const type = req.params.type
+    const depot = req.params.depot
+    const type = req.params.type
 
-    // Info.countDocuments({depot: depot}).where({type: "Useful"})
-    // .then(result => {
-    //     // //console.log(result)
-    //     res.status(201).json({
-    //         count: result
-    //     })
-    // })
-    // .catch(err => {
-    //     res.status(500).json({
-    //         error: err
-    //     })
-    // })
-    res.status(201).json({
-        message: "working"
+    Info.countDocuments({depot: depot}).where({type: type})
+    .then(result => {
+        // //console.log(result)
+        res.status(201).json({
+            count: result
+        })
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        })
     })
   })
 
