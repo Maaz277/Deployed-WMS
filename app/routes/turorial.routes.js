@@ -108,13 +108,19 @@ module.exports = app => {
   })
 
   router.post('/login', (req, res, next) => {
-    User.findOne({Id: req.body.id, password: req.body.password})
+    User.findOne({Id: req.body.Id, password: req.body.password})
         .then(User => {
             if(!User){
-                throw {error: true, message: "Sorry, Invalid ID or Password."}
+                //throw {error: true, message: "Sorry, Invalid ID or Password.", Id: Id, password: password}
+                return res.status(205).json({
+                    message: "Invalid",
+                    Id: req.body.Id, password: req.body.password
+                })
             }
             else{
-                return res.status(200).send(User);
+                return res.status(200).json({
+                    message: "working"
+                })
             }
         })
         .catch(err => res.status(400).send(err));
