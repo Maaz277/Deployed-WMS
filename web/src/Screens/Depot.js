@@ -34,16 +34,16 @@ export default function Depot(){
         <div className = "depot">
             <div className = "hor">
                 <div>
-                    <h1>Depot 1</h1>
-                    <Box num = {d1} color = "red"/>
+                    <h1 style = {{opacity: "0.7"}}>Depot 1</h1>
+                    <Box num = {d1} color = "white"/>
                 </div>
                 <div>
-                    <h1>Depot 2</h1>
-                    <Box num = {d2} color = "blue"/>
+                    <h1 style = {{opacity: "0.7"}}>Depot 2</h1>
+                    <Box num = {d2} color = "white"/>
                 </div>
                 <div>
-                    <h1>Depot 3</h1>
-                    <Box num = {d3} color = "green"/>
+                    <h1 style = {{opacity: "0.7"}}>Depot 3</h1>
+                    <Box num = {d3} color = "white"/>
                 </div>
             </div>
         </div>

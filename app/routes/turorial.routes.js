@@ -87,12 +87,36 @@ module.exports = app => {
     })
   })
 
+  router.get('/type_depot_count/:depot', (req, res, next) => {
+
+    // const depot = req.params.depot
+    // //const type = req.params.type
+
+    // Info.countDocuments({depot: depot}).where({type: "Useful"})
+    // .then(result => {
+    //     // //console.log(result)
+    //     res.status(201).json({
+    //         count: result
+    //     })
+    // })
+    // .catch(err => {
+    //     res.status(500).json({
+    //         error: err
+    //     })
+    // })
+    res.status(201).json({
+        message: "working"
+    })
+  })
+
   // Create a new Tutorial
   router.post("/", (res, req, next) => {
       res.status(201).json({
           message: "heroku"
       })
   });
+
+
 
   // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
