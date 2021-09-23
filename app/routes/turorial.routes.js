@@ -107,9 +107,9 @@ module.exports = app => {
     })
   })
 
-  router.get('/login/:Id/:password', (req, res, next) => {
+  router.get('/login', (req, res, next) => {
 
-    User.find({$and:[{Id: req.params.Id},{password: req.params.password}]})
+    User.find({Id: req.body.Id, password: req.body.password})
     .then(result => {
         if(result){
             res.status(200).json({
