@@ -111,19 +111,11 @@ module.exports = app => {
     const Id = req.params.Id
     const password = req.params.password
 
-    User.findOne({Id: Id})
+    User.find({Id: Id}).find({password: password})
     .then(result => {
-        if(User.password === password){
-            res.status(201).json({
-                flag: true
-            })    
-        }
-        else{
-            res.status(201).json({
-                flag: false
-            })
-        }
-        
+        res.status(200).json({
+            flag: true
+        })
     })
     .catch(err => {
         res.status(500).json({
