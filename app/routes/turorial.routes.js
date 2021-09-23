@@ -111,7 +111,7 @@ module.exports = app => {
     const Id = req.params.Id
     const password = req.params.password
 
-    User.findOne({Id: Id, password: password})
+    User.findOne({Id: Id}).where({password: password})
     .then(result => {
         res.status(201).json({
             message: "Match"
