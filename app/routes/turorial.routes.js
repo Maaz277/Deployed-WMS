@@ -107,24 +107,23 @@ module.exports = app => {
     })
   })
 
-  router.post('/login', (req, res, next) => {
-    User.findOne({Id: req.body.Id, password: req.body.password})
-        .then(User => {
-            if(!User){
-                //throw {error: true, message: "Sorry, Invalid ID or Password.", Id: Id, password: password}
-                return res.status(205).json({
-                    message: "Invalid",
-                    Id: req.body.Id, password: req.body.password
-                })
-            }
-            else{
-                return res.status(200).json({
-                    message: "working"
-                })
-            }
+  router.post('/login/:Id/:password', (req, res, next) => {
+    const Id = req.params.Id
+    const password = req.params.password
+
+    User.find({Id: Id, password: password})
+    .then(result => {
+        res.status(201).json({
+            message: "Match"
         })
-        .catch(err => res.status(400).send(err));
     })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        })
+    })
+    
+})
 
   // Create a new Tutorial
   router.post("/", (res, req, next) => {
