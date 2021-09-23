@@ -111,7 +111,7 @@ module.exports = app => {
     const Id = req.params.Id
     const password = req.params.password
 
-    User.find({Id: Id}).find({password: password})
+    User.find({$and:[{Id: Id},{password: password}]})
     .then(result => {
         res.status(200).json({
             flag: true
@@ -119,6 +119,7 @@ module.exports = app => {
     })
     .catch(err => {
         res.status(500).json({
+            message: "Invalid Id or password",
             error: err
         })
     })
