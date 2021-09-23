@@ -108,10 +108,8 @@ module.exports = app => {
   })
 
   router.post('/login/:Id/:password', (req, res, next) => {
-    const Id = req.params.Id
-    const password = req.params.password
 
-    User.find({$and:[{Id: Id},{password: password}]})
+    User.find({$and:[{Id: req.params.Id},{password: req.params.password}]})
     .then(result => {
         res.status(200).json({
             flag: true
