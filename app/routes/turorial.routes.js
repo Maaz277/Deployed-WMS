@@ -115,11 +115,12 @@ module.exports = app => {
         if(result){
             res.status(200).json({
                 flag: true,
-                message: "Match"
+                message: "Match",
+                result: result
             })
         }
         else{
-            throw {error: true, message: "Sorry, Invalid ID or Password."}
+            throw {error: true, message: "Sorry, Invalid ID or Password.", result: result}
         }
     })
     .catch(err => {
