@@ -111,6 +111,7 @@ module.exports = app => {
 
     User.findOne({Id: req.body.Id, password: req.body.password})
     .then(result => {
+        console.log(result)
         if(result){
             res.status(200).json({
                 flag: true,
