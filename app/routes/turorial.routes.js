@@ -109,7 +109,7 @@ module.exports = app => {
 
   router.get('/login', (req, res, next) => {
 
-    User.find({Id: req.body.Id, password: req.body.password})
+    User.findOne({Id: req.body.Id, password: req.body.password})
     .then(result => {
         if(result){
             res.status(200).json({
