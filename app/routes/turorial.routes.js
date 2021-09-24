@@ -118,9 +118,7 @@ module.exports = app => {
             })
         }
         else{
-            res.status(200).json({
-                message: "Invalid Id or password"
-            })
+            throw {error: true, message: "Sorry, Invalid ID or Password."}
         }
     })
     .catch(err => {
