@@ -107,7 +107,7 @@ module.exports = app => {
     })
   })
 
-  router.get('/login', (req, res, next) => {
+  router.post('/login', (req, res, next) => {
 
     User.findOne({Id: req.body.Id, password: req.body.password})
     .then(result => {
