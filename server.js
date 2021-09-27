@@ -29,7 +29,7 @@ db.mongoose
   });
 
 // simple route
-require("./app/routes/turorial.routes")(app);
+require("./app/routes/routes")(app);
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('web/build'))

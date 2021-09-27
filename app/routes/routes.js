@@ -1,9 +1,7 @@
 module.exports = app => {
-  const tutorials = require("../controllers/tutorial.controller.js");
-
   var router = require("express").Router();
 
-  const Info = require("../models/tutorial.model")
+  const Info = require("../models/Info")
   const User = require("../models/User")
 
   const mongoose = require("mongoose")
@@ -29,11 +27,6 @@ module.exports = app => {
             error: err
         })
     })
-
-    // console.log(req.body)
-    // res.status(201).send({
-    //   message: "success",
-    // })
   });
 
   router.get('/depot_count/:depot', (req, res, next) => {
@@ -60,7 +53,6 @@ module.exports = app => {
 
     Info.countDocuments({type: type})
     .then(result => {
-        //console.log(result)
         res.status(201).json({
             count: result
         })
@@ -76,7 +68,6 @@ module.exports = app => {
 
     Info.countDocuments()
     .then(result => {
-        //console.log(result)
         res.status(201).json({
             count: result
         })
@@ -95,7 +86,6 @@ module.exports = app => {
 
     Info.countDocuments({depot: depot}).where({type: type})
     .then(result => {
-        // //console.log(result)
         res.status(201).json({
             count: result
         })
@@ -107,7 +97,7 @@ module.exports = app => {
     })
   })
 
-  router.post('/login', (req, res, next) => {
+  router.get('/login', (req, res, next) => {
 
     User.findOne({Id: req.body.Id, password: req.body.password})
     .then(result => {
@@ -131,32 +121,5 @@ module.exports = app => {
     
 })
 
-  // Create a new Tutorial
-  router.post("/", (res, req, next) => {
-      res.status(201).json({
-          message: "heroku"
-      })
-  });
-
-
-
-  // Retrieve all Tutorials
-  router.get("/", tutorials.findAll);
-
-  // Retrieve all published Tutorials
-  router.get("/published", tutorials.findAllPublished);
-
-  // Retrieve a single Tutorial with id
-  router.get("/:id", tutorials.findOne);
-
-  // Update a Tutorial with id
-  router.put("/:id", tutorials.update);
-
-  // Delete a Tutorial with id
-  router.delete("/:id", tutorials.delete);
-
-  // Create a new Tutorial
-  router.delete("/", tutorials.deleteAll);
-
-  app.use("/api", router);
+app.use("/api", router);
 };
